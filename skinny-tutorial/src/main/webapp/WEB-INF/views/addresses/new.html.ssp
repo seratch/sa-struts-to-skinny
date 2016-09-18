@@ -5,7 +5,7 @@
  2. scalateTemplateConfig in project/Build.scala
 --%>
 
-<h3>${s.i18n.getOrKey("addres.edit")} : #${s.params.id}</h3>
+<h3>${s.i18n.getOrKey("address.new")}</h3>
 <hr/>
 
 <%--
@@ -14,6 +14,6 @@
 #end
 --%>
 
-<form method="post" action="${s.url(Controllers.addres.updateUrl, "id" -> s.params.id)}" class="form">
+<form method="post" action="${s.url(Controllers.addresses.createUrl)}" class="form">
  ${include("_form.html.ssp")}
 </form>

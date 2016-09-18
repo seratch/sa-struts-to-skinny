@@ -1,5 +1,5 @@
 <%@val s: skinny.Skinny %>
-<%@val items: Seq[model.Addres] %>
+<%@val items: Seq[model.Address] %>
 <%@val totalPages: Int %>
 <%@val page: Int = s.params.page.map(_.toString.toInt).getOrElse(1) %>
 
@@ -8,7 +8,7 @@
  2. scalateTemplateConfig in project/Build.scala
 --%>
 
-<h3>${s.i18n.getOrKey("addres.list")}</h3>
+<h3>${s.i18n.getOrKey("address.list")}</h3>
 <hr/>
 #for (notice <- s.flash.notice)
   <p class="alert alert-info">${notice}</p>
@@ -17,16 +17,16 @@
 #if (totalPages > 1)
   <ul class="pagination">
     <li>
-      <a href="${s.url(Controllers.addres.indexUrl, "page" -> 1)}">&laquo;</a>
+      <a href="${s.url(Controllers.addresses.indexUrl, "page" -> 1)}">&laquo;</a>
     </li>
     <% val maxPage = Math.min(totalPages, if (page <= 5) 11 else page + 5) %>
     #for (i <- Math.max(1, maxPage - 10) to maxPage)
       <li class="${if (i == page) "active" else ""}">
-        <a href="${s.url(Controllers.addres.indexUrl, "page" -> i)}">${i}</a>
+        <a href="${s.url(Controllers.addresses.indexUrl, "page" -> i)}">${i}</a>
       </li>
     #end
     <li>
-      <a href="${s.url(Controllers.addres.indexUrl, "page" -> totalPages)}">&raquo;</a>
+      <a href="${s.url(Controllers.addresses.indexUrl, "page" -> totalPages)}">&raquo;</a>
     </li>
     <li>
       <span>${Math.min(page, totalPages)} / ${totalPages}</span>
@@ -37,9 +37,9 @@
 <table class="table table-bordered">
 <thead>
   <tr>
-    <th>${s.i18n.getOrKey("addres.id")}</th>
-    <th>${s.i18n.getOrKey("addres.name")}</th>
-    <th>${s.i18n.getOrKey("addres.version")}</th>
+    <th>${s.i18n.getOrKey("address.id")}</th>
+    <th>${s.i18n.getOrKey("address.name")}</th>
+    <th>${s.i18n.getOrKey("address.version")}</th>
     <th></th>
   </tr>
 </thead>
@@ -50,10 +50,10 @@
     <td>${item.name}</td>
     <td>${item.version}</td>
     <td>
-      <a href="${s.url(Controllers.addres.showUrl, "id" -> item.id)}" class="btn btn-default">${s.i18n.getOrKey("detail")}</a>
-      <a href="${s.url(Controllers.addres.editUrl, "id" -> item.id)}" class="btn btn-info">${s.i18n.getOrKey("edit")}</a>
-      <a data-method="delete" data-confirm="${s.i18n.getOrKey("addres.delete.confirm")}"
-        href="${s.url(Controllers.addres.destroyUrl, "id" -> item.id)}" rel="nofollow" class="btn btn-danger">${s.i18n.getOrKey("delete")}</a>
+      <a href="${s.url(Controllers.addresses.showUrl, "id" -> item.id)}" class="btn btn-default">${s.i18n.getOrKey("detail")}</a>
+      <a href="${s.url(Controllers.addresses.editUrl, "id" -> item.id)}" class="btn btn-info">${s.i18n.getOrKey("edit")}</a>
+      <a data-method="delete" data-confirm="${s.i18n.getOrKey("address.delete.confirm")}"
+        href="${s.url(Controllers.addresses.destroyUrl, "id" -> item.id)}" rel="nofollow" class="btn btn-danger">${s.i18n.getOrKey("delete")}</a>
     </td>
   </tr>
   #end
@@ -65,4 +65,4 @@
 </tbody>
 </table>
 
-<a href="${s.url(Controllers.addres.newUrl)}" class="btn btn-primary">${s.i18n.getOrKey("new")}</a>
+<a href="${s.url(Controllers.addresses.newUrl)}" class="btn btn-primary">${s.i18n.getOrKey("new")}</a>

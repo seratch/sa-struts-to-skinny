@@ -8,7 +8,7 @@
 
 <div class="form-group">
   <label class="control-label" for="name">
-    ${s.i18n.getOrKey("addres.name")}
+    ${s.i18n.getOrKey("address.name")}
   </label>
   <div class="controls row">
     <div class="${if(keyAndErrorMessages.hasErrors("name")) "has-error" else ""}">
@@ -27,7 +27,7 @@
 </div>
 <div class="form-group">
   <label class="control-label" for="version">
-    ${s.i18n.getOrKey("addres.version")}
+    ${s.i18n.getOrKey("address.version")}
   </label>
   <div class="controls row">
     <div class="${if(keyAndErrorMessages.hasErrors("version")) "has-error" else ""}">
@@ -47,5 +47,5 @@
 <div class="form-actions">
   ${unescape(s.csrfHiddenInputTag)}
   <input type="submit" class="btn btn-primary" value="${s.i18n.getOrKey("submit")}">
-  <a class="btn btn-default" href="${s.url(Controllers.addres.indexUrl)}">${s.i18n.getOrKey("cancel")}</a>
+  <a class="btn btn-default" href="${s.url(Controllers.addresses.indexUrl)}">${s.i18n.getOrKey("cancel")}</a>
 </div>

@@ -65,11 +65,7 @@ DBSettings.initialize()
   fork in Test := true,
   scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature"),
   ideaExcludeFolders := Seq(".idea", ".idea_modules", "db", "target", "task/target", "build", "standalone-build", "node_modules")
-)
-// ------------------------------
-// Automated code formatter before compilaion
-// Disabled by default because this is confusing for beginners
-// ++ scalariformSettings
+) ++ scalariformSettings
 
 lazy val scalatePrecompileSettings = scalateSettings ++ Seq(
   scalateTemplateConfig in Compile <<= (sourceDirectory in Compile){ base =>

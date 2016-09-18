@@ -59,23 +59,27 @@ class DepartmentsController_IntegrationTestSpec extends SkinnyFlatSpec with Skin
   }
 
   it should "create a department" in {
-    post(s"/departments",
+    post(
+      s"/departments",
       "name" -> "dummy",
-      "version" -> Int.MaxValue.toString()) {
-      logBodyUnless(403)
-      status should equal(403)
-    }
+      "version" -> Int.MaxValue.toString()
+    ) {
+        logBodyUnless(403)
+        status should equal(403)
+      }
 
     withSession("csrf-token" -> "valid_token") {
-      post(s"/departments",
+      post(
+        s"/departments",
         "name" -> "dummy",
         "version" -> Int.MaxValue.toString(),
-        "csrf-token" -> "valid_token") {
-        logBodyUnless(302)
-        status should equal(302)
-        val id = header("Location").split("/").last.toLong
-        Department.findById(id).isDefined should equal(true)
-      }
+        "csrf-token" -> "valid_token"
+      ) {
+          logBodyUnless(302)
+          status should equal(302)
+          val id = header("Location").split("/").last.toLong
+          Department.findById(id).isDefined should equal(true)
+        }
     }
   }
 
@@ -87,21 +91,25 @@ class DepartmentsController_IntegrationTestSpec extends SkinnyFlatSpec with Skin
   }
 
   it should "update a department" in {
-    put(s"/departments/${newDepartment.id}",
+    put(
+      s"/departments/${newDepartment.id}",
       "name" -> "dummy",
-      "version" -> Int.MaxValue.toString()) {
-      logBodyUnless(403)
-      status should equal(403)
-    }
+      "version" -> Int.MaxValue.toString()
+    ) {
+        logBodyUnless(403)
+        status should equal(403)
+      }
 
     withSession("csrf-token" -> "valid_token") {
-      put(s"/departments/${newDepartment.id}",
+      put(
+        s"/departments/${newDepartment.id}",
         "name" -> "dummy",
         "version" -> Int.MaxValue.toString(),
-        "csrf-token" -> "valid_token") {
-        logBodyUnless(302)
-        status should equal(302)
-      }
+        "csrf-token" -> "valid_token"
+      ) {
+          logBodyUnless(302)
+          status should equal(302)
+        }
     }
   }
 

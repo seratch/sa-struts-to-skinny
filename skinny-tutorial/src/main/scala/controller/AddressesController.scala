@@ -3,14 +3,14 @@ package controller
 import skinny._
 import skinny.validator._
 import _root_.controller._
-import model.Addres
+import model.Address
 
-class AddresController extends SkinnyResource with ApplicationController {
+class AddressesController extends SkinnyResource with ApplicationController {
   protectFromForgery()
 
-  override def model = Addres
-  override def resourcesName = "addres"
-  override def resourceName = "addres"
+  override def model = Address
+  override def resourcesName = "addresses"
+  override def resourceName = "address"
 
   override def resourcesBasePath = s"/${toSnakeCase(resourcesName)}"
   override def useSnakeCasedParamKeys = true
@@ -18,7 +18,8 @@ class AddresController extends SkinnyResource with ApplicationController {
   override def viewsDirectoryPath = s"/${resourcesName}"
 
   override def createParams = Params(params)
-  override def createForm = validation(createParams,
+  override def createForm = validation(
+    createParams,
     paramKey("name") is required & maxLength(255),
     paramKey("version") is required & numeric & intValue
   )
@@ -28,7 +29,8 @@ class AddresController extends SkinnyResource with ApplicationController {
   )
 
   override def updateParams = Params(params)
-  override def updateForm = validation(updateParams,
+  override def updateForm = validation(
+    updateParams,
     paramKey("name") is required & maxLength(255),
     paramKey("version") is required & numeric & intValue
   )

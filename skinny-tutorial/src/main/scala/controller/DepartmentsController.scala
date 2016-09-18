@@ -18,7 +18,8 @@ class DepartmentsController extends SkinnyResource with ApplicationController {
   override def viewsDirectoryPath = s"/${resourcesName}"
 
   override def createParams = Params(params)
-  override def createForm = validation(createParams,
+  override def createForm = validation(
+    createParams,
     paramKey("name") is required & maxLength(255),
     paramKey("version") is required & numeric & intValue
   )
@@ -28,7 +29,8 @@ class DepartmentsController extends SkinnyResource with ApplicationController {
   )
 
   override def updateParams = Params(params)
-  override def updateForm = validation(updateParams,
+  override def updateForm = validation(
+    updateParams,
     paramKey("name") is required & maxLength(255),
     paramKey("version") is required & numeric & intValue
   )

@@ -7,67 +7,61 @@ import org.joda.time._
 import _root_.controller.Controllers
 import model._
 
-class EmployeesController_IntegrationTestSpec extends SkinnyFlatSpec with SkinnyTestSupport with BeforeAndAfterAll with DBSettings {
-  addFilter(Controllers.employees, "/*")
+class AddressesController_IntegrationTestSpec extends SkinnyFlatSpec with SkinnyTestSupport with BeforeAndAfterAll with DBSettings {
+  addFilter(Controllers.addresses, "/*")
 
   override def afterAll() {
     super.afterAll()
-    Employee.deleteAll()
+    Address.deleteAll()
   }
 
-  def newEmployee = FactoryGirl(Employee).create()
-  def newDepartment = FactoryGirl(Department).create()
-  def newAddress = FactoryGirl(Address).create()
+  def newAddres = FactoryGirl(Address).create()
 
-  it should "show employees" in {
-    get("/employees") {
+  it should "show addresses" in {
+    get("/addresses") {
       logBodyUnless(200)
       status should equal(200)
     }
-    get("/employees/") {
+    get("/addresses/") {
       logBodyUnless(200)
       status should equal(200)
     }
-    get("/employees.json") {
+    get("/addresses.json") {
       logBodyUnless(200)
       status should equal(200)
     }
-    get("/employees.xml") {
+    get("/addresses.xml") {
       logBodyUnless(200)
       status should equal(200)
     }
   }
 
-  it should "show a employee in detail" in {
-    get(s"/employees/${newEmployee.id}") {
+  it should "show an address in detail" in {
+    get(s"/addresses/${newAddres.id}") {
       logBodyUnless(200)
       status should equal(200)
     }
-    get(s"/employees/${newEmployee.id}.xml") {
+    get(s"/addresses/${newAddres.id}.xml") {
       logBodyUnless(200)
       status should equal(200)
     }
-    get(s"/employees/${newEmployee.id}.json") {
+    get(s"/addresses/${newAddres.id}.json") {
       logBodyUnless(200)
       status should equal(200)
     }
   }
 
   it should "show new entry form" in {
-    get(s"/employees/new") {
+    get(s"/addresses/new") {
       logBodyUnless(200)
       status should equal(200)
     }
   }
 
-  it should "create a employee" in {
+  it should "create an address" in {
     post(
-      s"/employees",
+      s"/addresses",
       "name" -> "dummy",
-      "job_type" -> "dummy",
-      "salary" -> Int.MaxValue.toString(),
-      "department_id" -> newDepartment.id.toString,
-      "address_id" -> newAddress.id.toString(),
       "version" -> Int.MaxValue.toString()
     ) {
         logBodyUnless(403)
@@ -76,38 +70,30 @@ class EmployeesController_IntegrationTestSpec extends SkinnyFlatSpec with Skinny
 
     withSession("csrf-token" -> "valid_token") {
       post(
-        s"/employees",
+        s"/addresses",
         "name" -> "dummy",
-        "job_type" -> "dummy",
-        "salary" -> Int.MaxValue.toString(),
-        "department_id" -> newDepartment.id.toString,
-        "address_id" -> newAddress.id.toString(),
         "version" -> Int.MaxValue.toString(),
         "csrf-token" -> "valid_token"
       ) {
           logBodyUnless(302)
           status should equal(302)
           val id = header("Location").split("/").last.toLong
-          Employee.findById(id).isDefined should equal(true)
+          Address.findById(id).isDefined should equal(true)
         }
     }
   }
 
   it should "show the edit form" in {
-    get(s"/employees/${newEmployee.id}/edit") {
+    get(s"/addresses/${newAddres.id}/edit") {
       logBodyUnless(200)
       status should equal(200)
     }
   }
 
-  it should "update a employee" in {
+  it should "update an address" in {
     put(
-      s"/employees/${newEmployee.id}",
+      s"/addresses/${newAddres.id}",
       "name" -> "dummy",
-      "job_type" -> "dummy",
-      "salary" -> Int.MaxValue.toString(),
-      "department_id" -> newDepartment.id.toString,
-      "address_id" -> newAddress.id.toString(),
       "version" -> Int.MaxValue.toString()
     ) {
         logBodyUnless(403)
@@ -116,12 +102,8 @@ class EmployeesController_IntegrationTestSpec extends SkinnyFlatSpec with Skinny
 
     withSession("csrf-token" -> "valid_token") {
       put(
-        s"/employees/${newEmployee.id}",
+        s"/addresses/${newAddres.id}",
         "name" -> "dummy",
-        "job_type" -> "dummy",
-        "salary" -> Int.MaxValue.toString(),
-        "department_id" -> newDepartment.id.toString,
-        "address_id" -> newAddress.id.toString(),
         "version" -> Int.MaxValue.toString(),
         "csrf-token" -> "valid_token"
       ) {
@@ -131,13 +113,13 @@ class EmployeesController_IntegrationTestSpec extends SkinnyFlatSpec with Skinny
     }
   }
 
-  it should "delete a employee" in {
-    delete(s"/employees/${newEmployee.id}") {
+  it should "delete an address" in {
+    delete(s"/addresses/${newAddres.id}") {
       logBodyUnless(403)
       status should equal(403)
     }
     withSession("csrf-token" -> "valid_token") {
-      delete(s"/employees/${newEmployee.id}?csrf-token=valid_token") {
+      delete(s"/addresses/${newAddres.id}?csrf-token=valid_token") {
         logBodyUnless(200)
         status should equal(200)
       }

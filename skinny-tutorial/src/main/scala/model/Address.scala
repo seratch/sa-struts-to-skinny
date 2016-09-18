@@ -4,17 +4,17 @@ import skinny.orm._, feature._
 import scalikejdbc._
 import org.joda.time._
 
-case class Addres(
+case class Address(
   id: Long,
   name: String,
   version: Int
 )
 
-object Addres extends SkinnyCRUDMapper[Addres] {
+object Address extends SkinnyCRUDMapper[Address] {
   override lazy val tableName = "address"
   override lazy val defaultAlias = createAlias("a")
 
-  override def extract(rs: WrappedResultSet, rn: ResultName[Addres]): Addres = {
+  override def extract(rs: WrappedResultSet, rn: ResultName[Address]): Address = {
     autoConstruct(rs, rn)
   }
 }

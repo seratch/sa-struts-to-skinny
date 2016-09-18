@@ -63,7 +63,8 @@ class DepartmentsControllerSpec extends FunSpec with Matchers with BeforeAndAfte
         val controller = createMockController
         controller.prepareParams(
           "name" -> "dummy",
-          "version" -> Int.MaxValue.toString())
+          "version" -> Int.MaxValue.toString()
+        )
         controller.createResource()
         controller.status should equal(200)
       }
@@ -73,7 +74,7 @@ class DepartmentsControllerSpec extends FunSpec with Matchers with BeforeAndAfte
         controller.prepareParams() // no parameters
         controller.createResource()
         controller.status should equal(400)
-        controller.errorMessages.size should be >(0)
+        controller.errorMessages.size should be > (0)
       }
     }
 
@@ -82,7 +83,7 @@ class DepartmentsControllerSpec extends FunSpec with Matchers with BeforeAndAfte
       val controller = createMockController
       controller.editResource(department.id)
       controller.status should equal(200)
-        controller.renderCall.map(_.path) should equal(Some("/departments/edit"))
+      controller.renderCall.map(_.path) should equal(Some("/departments/edit"))
     }
 
     it("updates a department") {
@@ -90,7 +91,8 @@ class DepartmentsControllerSpec extends FunSpec with Matchers with BeforeAndAfte
       val controller = createMockController
       controller.prepareParams(
         "name" -> "dummy",
-        "version" -> Int.MaxValue.toString())
+        "version" -> Int.MaxValue.toString()
+      )
       controller.updateResource(department.id)
       controller.status should equal(200)
     }

@@ -16,6 +16,8 @@ class EmployeesControllerSpec extends FunSpec with Matchers with BeforeAndAfterA
 
   def createMockController = new EmployeesController with MockController
   def newEmployee = FactoryGirl(Employee).create()
+  def newDepartment = FactoryGirl(Department).create()
+  def newAddress = FactoryGirl(Address).create()
 
   describe("EmployeesController") {
 
@@ -65,9 +67,10 @@ class EmployeesControllerSpec extends FunSpec with Matchers with BeforeAndAfterA
           "name" -> "dummy",
           "job_type" -> "dummy",
           "salary" -> Int.MaxValue.toString(),
-          "department_id" -> Int.MaxValue.toString(),
-          "address_id" -> Int.MaxValue.toString(),
-          "version" -> Int.MaxValue.toString())
+          "department_id" -> newDepartment.id.toString,
+          "address_id" -> newAddress.id.toString(),
+          "version" -> Int.MaxValue.toString()
+        )
         controller.createResource()
         controller.status should equal(200)
       }
@@ -77,7 +80,7 @@ class EmployeesControllerSpec extends FunSpec with Matchers with BeforeAndAfterA
         controller.prepareParams() // no parameters
         controller.createResource()
         controller.status should equal(400)
-        controller.errorMessages.size should be >(0)
+        controller.errorMessages.size should be > (0)
       }
     }
 
@@ -86,7 +89,7 @@ class EmployeesControllerSpec extends FunSpec with Matchers with BeforeAndAfterA
       val controller = createMockController
       controller.editResource(employee.id)
       controller.status should equal(200)
-        controller.renderCall.map(_.path) should equal(Some("/employees/edit"))
+      controller.renderCall.map(_.path) should equal(Some("/employees/edit"))
     }
 
     it("updates a employee") {
@@ -96,9 +99,10 @@ class EmployeesControllerSpec extends FunSpec with Matchers with BeforeAndAfterA
         "name" -> "dummy",
         "job_type" -> "dummy",
         "salary" -> Int.MaxValue.toString(),
-        "department_id" -> Int.MaxValue.toString(),
-        "address_id" -> Int.MaxValue.toString(),
-        "version" -> Int.MaxValue.toString())
+        "department_id" -> newDepartment.id.toString,
+        "address_id" -> newAddress.id.toString(),
+        "version" -> Int.MaxValue.toString()
+      )
       controller.updateResource(employee.id)
       controller.status should equal(200)
     }

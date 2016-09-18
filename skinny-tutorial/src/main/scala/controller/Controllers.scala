@@ -8,7 +8,7 @@ object Controllers {
   def mount(ctx: ServletContext): Unit = {
     employees.mount(ctx)
     departments.mount(ctx)
-    addres.mount(ctx)
+    addresses.mount(ctx)
     root.mount(ctx)
     AssetsController.mount(ctx)
   }
@@ -17,7 +17,7 @@ object Controllers {
     val indexUrl = get("/?")(index).as('index)
   }
 
-  object addres extends _root_.controller.AddresController with Routes {
+  object addresses extends _root_.controller.AddressesController with Routes {
   }
 
   object departments extends _root_.controller.DepartmentsController with Routes {
