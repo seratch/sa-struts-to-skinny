@@ -1,0 +1,19 @@
+<%@val s: skinny.Skinny %>
+<%@val id: Option[String] = None %>
+
+<h1>Tutorial: Condition: ${id}</h1>
+
+"id" is ${id}.<br />
+#if (id.isDefined)
+    "id" is not null.
+#else
+    "id" is null.
+#end
+<br />
+#if (id.exists(_ == "1"))
+    "id" is one.
+#elseif (id.exists(_ == "2"))
+    "id" is two.
+#else
+    "id" is other.
+#end

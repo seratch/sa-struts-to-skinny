@@ -16,6 +16,7 @@ object Controllers extends ServletApiImplicits {
     add.mount(ctx)
     ajax.mount(ctx)
     checkbox.mount(ctx)
+    condition.mount(ctx)
     foreach.mount(ctx)
     nestedForeach.mount(ctx)
     select.mount(ctx)
@@ -56,6 +57,10 @@ object Controllers extends ServletApiImplicits {
   object checkbox extends _root_.controller.tutorial.CheckboxController with Routes {
     val indexUrl = get("/sa-struts-tutorial/checkbox/?")(index).as('index)
     val submitUrl = post("/sa-struts-tutorial/checkbox/?")(submit).as('submit)
+  }
+  object condition extends _root_.controller.tutorial.ConditionController with Routes {
+    val invalidUrl = get("/sa-struts-tutorial/condition/?")(index).as('invalid)
+    val validUrl = get("/sa-struts-tutorial/condition/:id")(index).as('valid)
   }
   object foreach extends _root_.controller.tutorial.ForeachController with Routes {
     val indexUrl = get("/sa-struts-tutorial/foreach/?")(index).as('index)
