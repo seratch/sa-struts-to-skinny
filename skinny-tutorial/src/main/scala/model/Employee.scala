@@ -16,9 +16,10 @@ case class Employee(
   department: Option[Department] = None
 )
 
-object Employee extends SkinnyCRUDMapper[Employee] {
+object Employee extends SkinnyCRUDMapper[Employee] with OptimisticLockWithVersionFeature[Employee] {
   override lazy val tableName = "employee"
   override lazy val defaultAlias = createAlias("e")
+  override lazy val lockVersionFieldName = "version"
 
   lazy val addressRef = belongsTo[Address](Address, (e, a) => e.copy(address = a))
 

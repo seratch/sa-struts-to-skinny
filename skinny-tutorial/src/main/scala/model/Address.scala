@@ -10,9 +10,10 @@ case class Address(
   version: Int
 )
 
-object Address extends SkinnyCRUDMapper[Address] {
+object Address extends SkinnyCRUDMapper[Address] with OptimisticLockWithVersionFeature[Address] {
   override lazy val tableName = "address"
   override lazy val defaultAlias = createAlias("a")
+  override lazy val lockVersionFieldName = "version"
 
   override def extract(rs: WrappedResultSet, rn: ResultName[Address]): Address = {
     autoConstruct(rs, rn)
