@@ -1,0 +1,104 @@
+<%@val s: skinny.Skinny %>
+<%@val errorMessages: Seq[String] %>
+
+<h1>Tutorial: Validator</h1>
+
+#if (errorMessages.isEmpty == false)
+    <font color="red"><ul>
+        #for (error <- errorMessages)
+            <li class="control-label">${error}</li>
+        #end
+    </ul></font>
+#end
+
+<form method="post" action="${s.url(Controllers.validator.submitUrl)}" class="form">
+<table>
+<tr>
+<td>バイト:</td>
+<td><input type="text" name="byteText" value="${s.params.byteText}" /></td>
+</tr>
+<tr>
+<td>短整数:</td>
+<td><input type="text" name="shortText" value="${s.params.shortText}" /></td>
+</tr>
+<tr>
+<td>整数:</td>
+<td><input type="text" name="integerText" value="${s.params.integerText}" /></td>
+</tr>
+<tr>
+<td>長整数:</td>
+<td><input type="text" name="longText" value="${s.params.longText}" /></td>
+</tr>
+<tr>
+<td>短精度実数:</td>
+<td><input type="text" name="floatText" value="${s.params.floatText}" /></td>
+</tr>
+<tr>
+<td>長精度実数:</td>
+<td><input type="text" name="doubleText" value="${s.params.doubleText}" /></td>
+</tr>
+<tr>
+<td>日付:</td>
+<td><input type="text" name="dateText" value="${s.params.dateText}" /></td>
+</tr>
+<tr>
+<td>クレジットカード(9999999999999999の形式):</td>
+<td><input type="text" name="creditcardText" value="${s.params.creditcardText}" /></td>
+</tr>
+<tr>
+<td>メールアドレス:</td>
+<td><input type="text" name="emailText" value="${s.params.emailText}" /></td>
+</tr>
+<tr>
+<td>URL:</td>
+<td><input type="text" name="urlText" value="${s.params.urlText}" /></td>
+</tr>
+<tr>
+<td>整数(3～10):</td>
+<td><input type="text" name="intRangeText" value="${s.params.intRangeText}" /></td>
+</tr>
+<tr>
+<td>長整数(3～10):</td>
+<td><input type="text" name="longRangeText" value="${s.params.longRangeText}" /></td>
+</tr>
+<tr>
+<td>短精度実数(3.0～10.0):</td>
+<td><input type="text" name="floatRangeText" value="${s.params.floatRangeText}" /></td>
+</tr>
+<tr>
+<td>倍精度実数(3.0～10.0):</td>
+<td><input type="text" name="doubleRangeText" value="${s.params.doubleRangeText}" /></td>
+</tr>
+<tr>
+<td>文字列の長さの最小値が3:</td>
+<td><input type="text" name="minlengthText" value="${s.params.minlengthText}" /></td>
+</tr>
+<tr>
+<td>文字列の長さの最大値が10:</td>
+<td><input type="text" name="maxlengthText" value="${s.params.maxlengthText}" /></td>
+</tr>
+<tr>
+<td>文字列のバイト長の最小値が3:</td>
+<td><input type="text" name="minbytelengthText" value="${s.params.minbytelengthText}" /></td>
+</tr>
+<tr>
+<td>文字列のバイト長の最大値が10:</td>
+<td><input type="text" name="maxbytelengthText" value="${s.params.maxbytelengthText}" /></td>
+</tr>
+<tr>
+<td>電話番号:</td>
+<td><input type="text" name="phoneText" value="${s.params.phoneText}" /></td>
+</tr>
+<tr>
+<td>validwhen1Text:</td>
+<td><input type="text" name="validwhen1Text" value="${s.params.validwhen1Text}" /></td>
+</tr>
+<tr>
+<td>validwhen2Text<br />
+(validwhen1Textが入力されたときには入力必須):</td>
+<td><input type="text" name="validwhen2Text" value="${s.params.validwhen2Text}" /></td>
+</tr>
+</table>
+${unescape(s.csrfHiddenInputTag)}
+<input type="submit" name="submit" value="サブミット"/>
+</form>
