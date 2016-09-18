@@ -1,0 +1,8 @@
+<%@val s: skinny.Skinny %>
+
+<h1>Tutorial: Redirect</h1>
+
+<form method="post" action="${s.url(Controllers.redirect.submitUrl)}">
+${unescape(s.csrfHiddenInputTag)}
+<input type="submit" name="showGoogle" value="Googleを表示"/>
+</form>

@@ -2,7 +2,6 @@ package controller
 
 import skinny._
 import skinny.controller.AssetsController
-import skinny.micro.context.RichServletContext
 import skinny.micro.implicits.ServletApiImplicits
 
 object Controllers extends ServletApiImplicits {
@@ -13,10 +12,12 @@ object Controllers extends ServletApiImplicits {
     addresses.mount(ctx)
     root.mount(ctx)
 
+    index.mount(ctx)
     add.mount(ctx)
     ajax.mount(ctx)
     checkbox.mount(ctx)
     foreach.mount(ctx)
+    redirect.mount(ctx)
     ctx.mount(upload, "/sa-struts-tutorial/upload/*")
 
     AssetsController.mount(ctx)
@@ -35,6 +36,10 @@ object Controllers extends ServletApiImplicits {
   object employees extends _root_.controller.EmployeesController with Routes {
   }
 
+  object index extends _root_.controller.tutorial.IndexController with Routes {
+    val indexUrl = get("/sa-struts-tutorial/?")(index).as('index)
+  }
+
   object add extends _root_.controller.tutorial.AddController with Routes {
     val indexUrl = get("/sa-struts-tutorial/add/?")(index).as('index)
     val submitUrl = post("/sa-struts-tutorial/add/?")(submit).as('submit)
@@ -50,6 +55,11 @@ object Controllers extends ServletApiImplicits {
   object foreach extends _root_.controller.tutorial.ForeachController with Routes {
     val indexUrl = get("/sa-struts-tutorial/foreach/?")(index).as('index)
     val resultUrl = get("/sa-struts-tutorial/foreach/result/:id")(result).as('submit)
+  }
+
+  object redirect extends _root_.controller.tutorial.RedirectController with Routes {
+    val indexUrl = get("/sa-struts-tutorial/redirect/?")(index).as('index)
+    val submitUrl = post("/sa-struts-tutorial/redirect/?")(showGoogle).as('submit)
   }
 
   object upload extends _root_.controller.tutorial.UploadController with Routes {
