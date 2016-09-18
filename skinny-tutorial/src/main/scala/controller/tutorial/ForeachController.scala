@@ -4,11 +4,16 @@ import controller.tutorial.ForeachController.Item
 
 class ForeachController extends SAStrutsTutorialController {
 
-  private[this] val mapItems: Seq[Item] = (0 until 10).map(i => Item(i, s"name${i}"))
+  private[this] val items: Seq[Item] = (0 until 10).map(i => Item(i, s"name${i}"))
 
   def index = {
-    set("items" -> mapItems)
+    set("items" -> items)
     render("/tutorial/foreach/index")
+  }
+
+  def indexButton = {
+    set("items" -> items)
+    render("/tutorial/foreach/indexButton")
   }
 
   def result = {

@@ -1,0 +1,18 @@
+<%@val s: skinny.Skinny %>
+<%@val items: Seq[controller.tutorial.ForeachController.Item] %>
+<h1>Tutorial: Foreach Button</h1>
+
+<table border="1">
+#for (m <- items)
+    <tr>
+    <td>${m.id}</td>
+    <td>${m.name}</td>
+    <td>
+    <form method="post" action="${s.url(Controllers.foreach.resultPostUrl)}">
+    <input type="hidden" name="id" value="${m.id}"/>
+    ${unescape(s.csrfHiddenInputTag)}
+    <input type="submit" name="result" value="結果ページへ"/>
+    </form>
+    </td>
+#end
+</table>

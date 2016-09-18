@@ -54,7 +54,9 @@ object Controllers extends ServletApiImplicits {
   }
   object foreach extends _root_.controller.tutorial.ForeachController with Routes {
     val indexUrl = get("/sa-struts-tutorial/foreach/?")(index).as('index)
-    val resultUrl = get("/sa-struts-tutorial/foreach/result/:id")(result).as('submit)
+    val indexButtonUrl = get("/sa-struts-tutorial/foreachButton/?")(indexButton).as('indexButton)
+    val resultUrl = get("/sa-struts-tutorial/foreach/result/:id")(result).as('result)
+    val resultPostUrl = post("/sa-struts-tutorial/foreachButton/?")(result).as('resultPost)
   }
 
   object redirect extends _root_.controller.tutorial.RedirectController with Routes {
