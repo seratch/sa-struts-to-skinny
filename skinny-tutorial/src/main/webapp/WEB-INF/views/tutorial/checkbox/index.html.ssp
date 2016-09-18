@@ -1,0 +1,10 @@
+<%@val s: skinny.Skinny %>
+
+<h1>Tutorial: Checkbox</h1>
+
+<form method="post" action="${s.url(Controllers.checkbox.submitUrl)}" class="form">
+<input type="checkbox" name="check1" value="true" #if(s.params.check1==Some(true)) checked #end /> check1
+<input type="checkbox" name="check2" value="true" #if(s.params.check2==Some(true)) checked #end /> check2 <br />
+${unescape(s.csrfHiddenInputTag)}
+<input type="submit" name="submit" value="サブミット"/>
+</form>

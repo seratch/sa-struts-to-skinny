@@ -1,0 +1,21 @@
+<%@val s: skinny.Skinny %>
+<%@val errorMessages: Seq[String] %>
+<%@val result: Option[Int] = None %>
+
+<h1>Tutorial: Add</h1>
+
+#if (errorMessages.isEmpty == false)
+<font color="red"><ul>
+    #for (error <- errorMessages)
+        <li class="control-label">${error}</li>
+    #end
+</ul></font>
+#end
+
+<form method="post" action="${s.url(Controllers.add.submitUrl)}" class="form">
+<input type="text" name="arg1" value="${s.params.arg1}" /> +
+<input type="text" name="arg2" value="${s.params.arg2}" />
+= ${result.getOrElse("?")}<br/>
+${unescape(s.csrfHiddenInputTag)}
+<input type="submit" name="submit" value="サブミット"/>
+</form>

@@ -1,0 +1,7 @@
+<%@val s: skinny.Skinny %>
+<%@val result: Option[Int] = None %>
+
+<h1>Tutorial: Ajax</h1>
+
+<span id="message"></span><br />
+<input type="button" value="hello" onclick="$('#message').load('${Controllers.ajax.helloUrl}');"/>

@@ -1,0 +1,16 @@
+<%@val body: String %>
+<%@val s: skinny.Skinny %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    ${unescape(s.csrfMetaTags)}
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" href="${uri("/assets/css/sa.css")}"/>
+  </head>
+  <body>
+    <div class="container span12">
+      ${unescape(body)}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+<%@val s: skinny.Skinny %>
+<%@val item: controller.tutorial.ForeachController.Item %>
+<h1>Tutorial: Foreach result</h1>
+
+id: ${item.id}

@@ -1,0 +1,8 @@
+<%@val s: skinny.Skinny %>
+<%@val check1: Boolean%>
+<%@val check2: Boolean%>
+
+<h1>Tutorial: Checkbox submit</h1>
+
+check1:${check1}<br/>
+check2:${check2}<br/>
