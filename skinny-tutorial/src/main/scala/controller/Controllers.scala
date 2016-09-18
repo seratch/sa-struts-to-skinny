@@ -17,6 +17,7 @@ object Controllers extends ServletApiImplicits {
     ajax.mount(ctx)
     checkbox.mount(ctx)
     foreach.mount(ctx)
+    nestedForeach.mount(ctx)
     redirect.mount(ctx)
     ctx.mount(upload, "/sa-struts-tutorial/upload/*")
 
@@ -57,6 +58,9 @@ object Controllers extends ServletApiImplicits {
     val indexButtonUrl = get("/sa-struts-tutorial/foreachButton/?")(indexButton).as('indexButton)
     val resultUrl = get("/sa-struts-tutorial/foreach/result/:id")(result).as('result)
     val resultPostUrl = post("/sa-struts-tutorial/foreachButton/?")(result).as('resultPost)
+  }
+  object nestedForeach extends _root_.controller.tutorial.NestedForeachController with Routes {
+    val indexUrl = get("/sa-struts-tutorial/nestedForeach/?")(index).as('index)
   }
 
   object redirect extends _root_.controller.tutorial.RedirectController with Routes {

@@ -1,10 +1,10 @@
 package controller.tutorial
 
-import controller.tutorial.ForeachController.Item
+import model.ForeachItem
 
 class ForeachController extends SAStrutsTutorialController {
 
-  private[this] val items: Seq[Item] = (0 until 10).map(i => Item(i, s"name${i}"))
+  private[this] val items: Seq[ForeachItem] = (0 until 10).map(i => ForeachItem(i, s"name${i}"))
 
   def index = {
     set("items" -> items)
@@ -19,18 +19,12 @@ class ForeachController extends SAStrutsTutorialController {
   def result = {
     params.getAs[Int]("id") match {
       case Some(id) =>
-        val item = Item(id, s"name${id}")
+        val item = ForeachItem(id, s"name${id}")
         set("item" -> item)
         render("/tutorial/foreach/result")
       case _ =>
         halt(404)
     }
   }
-
-}
-
-object ForeachController {
-
-  case class Item(id: Int, name: String)
 
 }

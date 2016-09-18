@@ -1,0 +1,15 @@
+<%@val s: skinny.Skinny %>
+<%@val itemsSeq: Seq[Seq[model.ForeachItem]] %>
+
+<h1>Tutorial: Nested Foreach</h1>
+
+<table border="1">
+#for (items <- itemsSeq)
+    <tr>
+    #for (m <- items)
+        <td>${m.id}</td>
+        <td>${m.name}</td>
+    #end
+    </tr>
+#end
+</table>

@@ -1,5 +1,5 @@
 <%@val s: skinny.Skinny %>
-<%@val items: Seq[controller.tutorial.ForeachController.Item] %>
+<%@val items: Seq[model.ForeachItem] %>
 <h1>Tutorial: Foreach Button</h1>
 
 <table border="1">

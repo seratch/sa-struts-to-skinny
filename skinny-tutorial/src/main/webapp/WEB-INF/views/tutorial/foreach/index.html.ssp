@@ -1,5 +1,5 @@
 <%@val s: skinny.Skinny %>
-<%@val items: Seq[controller.tutorial.ForeachController.Item] %>
+<%@val items: Seq[model.ForeachItem] %>
 <h1>Tutorial: Foreach</h1>
 
 <table border="1">
@@ -8,5 +8,6 @@
     <td>${m.id}</td>
     <td>${m.name}</td>
     <td><a href="${s.url(Controllers.foreach.resultUrl, "id" -> m.id.toString)}">結果ページへ</a></td>
+    </tr>
 #end
 </table>
