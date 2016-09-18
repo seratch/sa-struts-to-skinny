@@ -1,0 +1,127 @@
+<%@val s: skinny.Skinny %>
+<%@val keyAndErrorMessages: skinny.KeyAndErrorMessages %>
+
+<%-- Be aware of package imports.
+ 1. src/main/scala/templates/ScalatePackage.scala
+ 2. scalateTemplateConfig in project/Build.scala
+--%>
+
+<div class="form-group">
+  <label class="control-label" for="name">
+    ${s.i18n.getOrKey("employee.name")}
+  </label>
+  <div class="controls row">
+    <div class="${if(keyAndErrorMessages.hasErrors("name")) "has-error" else ""}">
+      <div class="col-xs-12">
+        <input type="text" name="name" class="form-control" value="${s.params.name}" />
+      </div>
+    </div>
+    #if (keyAndErrorMessages.hasErrors("name"))
+      <div class="col-xs-12 has-error">
+        #for (error <- keyAndErrorMessages.getErrors("name"))
+          <label class="control-label">${error}</label>
+        #end
+      </div>
+    #end
+  </div>
+</div>
+<div class="form-group">
+  <label class="control-label" for="job_type">
+    ${s.i18n.getOrKey("employee.jobType")}
+  </label>
+  <div class="controls row">
+    <div class="${if(keyAndErrorMessages.hasErrors("job_type")) "has-error" else ""}">
+      <div class="col-xs-12">
+        <input type="text" name="job_type" class="form-control" value="${s.params.job_type}" />
+      </div>
+    </div>
+    #if (keyAndErrorMessages.hasErrors("job_type"))
+      <div class="col-xs-12 has-error">
+        #for (error <- keyAndErrorMessages.getErrors("job_type"))
+          <label class="control-label">${error}</label>
+        #end
+      </div>
+    #end
+  </div>
+</div>
+<div class="form-group">
+  <label class="control-label" for="salary">
+    ${s.i18n.getOrKey("employee.salary")}
+  </label>
+  <div class="controls row">
+    <div class="${if(keyAndErrorMessages.hasErrors("salary")) "has-error" else ""}">
+      <div class="col-xs-12">
+        <input type="text" name="salary" class="form-control" value="${s.params.salary}" />
+      </div>
+    </div>
+    #if (keyAndErrorMessages.hasErrors("salary"))
+      <div class="col-xs-12 has-error">
+        #for (error <- keyAndErrorMessages.getErrors("salary"))
+          <label class="control-label">${error}</label>
+        #end
+      </div>
+    #end
+  </div>
+</div>
+<div class="form-group">
+  <label class="control-label" for="department_id">
+    ${s.i18n.getOrKey("employee.departmentId")}
+  </label>
+  <div class="controls row">
+    <div class="${if(keyAndErrorMessages.hasErrors("department_id")) "has-error" else ""}">
+      <div class="col-xs-12">
+        <input type="text" name="department_id" class="form-control" value="${s.params.department_id}" />
+      </div>
+    </div>
+    #if (keyAndErrorMessages.hasErrors("department_id"))
+      <div class="col-xs-12 has-error">
+        #for (error <- keyAndErrorMessages.getErrors("department_id"))
+          <label class="control-label">${error}</label>
+        #end
+      </div>
+    #end
+  </div>
+</div>
+<div class="form-group">
+  <label class="control-label" for="address_id">
+    ${s.i18n.getOrKey("employee.addressId")}
+  </label>
+  <div class="controls row">
+    <div class="${if(keyAndErrorMessages.hasErrors("address_id")) "has-error" else ""}">
+      <div class="col-xs-12">
+        <input type="text" name="address_id" class="form-control" value="${s.params.address_id}" />
+      </div>
+    </div>
+    #if (keyAndErrorMessages.hasErrors("address_id"))
+      <div class="col-xs-12 has-error">
+        #for (error <- keyAndErrorMessages.getErrors("address_id"))
+          <label class="control-label">${error}</label>
+        #end
+      </div>
+    #end
+  </div>
+</div>
+<div class="form-group">
+  <label class="control-label" for="version">
+    ${s.i18n.getOrKey("employee.version")}
+  </label>
+  <div class="controls row">
+    <div class="${if(keyAndErrorMessages.hasErrors("version")) "has-error" else ""}">
+      <div class="col-xs-12">
+        <input type="text" name="version" class="form-control" value="${s.params.version}" />
+      </div>
+    </div>
+    #if (keyAndErrorMessages.hasErrors("version"))
+      <div class="col-xs-12 has-error">
+        #for (error <- keyAndErrorMessages.getErrors("version"))
+          <label class="control-label">${error}</label>
+        #end
+      </div>
+    #end
+  </div>
+</div>
+<div class="form-actions">
+  ${unescape(s.csrfHiddenInputTag)}
+  <input type="submit" class="btn btn-primary" value="${s.i18n.getOrKey("submit")}">
+  <a class="btn btn-default" href="${s.url(Controllers.employees.indexUrl)}">${s.i18n.getOrKey("cancel")}</a>
+</div>

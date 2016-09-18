@@ -6,12 +6,24 @@ import skinny.controller.AssetsController
 object Controllers {
 
   def mount(ctx: ServletContext): Unit = {
+    employees.mount(ctx)
+    departments.mount(ctx)
+    addres.mount(ctx)
     root.mount(ctx)
     AssetsController.mount(ctx)
   }
 
   object root extends RootController with Routes {
     val indexUrl = get("/?")(index).as('index)
+  }
+
+  object addres extends _root_.controller.AddresController with Routes {
+  }
+
+  object departments extends _root_.controller.DepartmentsController with Routes {
+  }
+
+  object employees extends _root_.controller.EmployeesController with Routes {
   }
 
 }
