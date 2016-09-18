@@ -9,8 +9,6 @@ class RootControllerSpec extends FunSpec with Matchers {
     it("shows top page") {
       val controller = new RootController with MockController
       controller.index
-      controller.contentType should equal("text/html; charset=utf-8")
-      controller.renderCall.map(_.path) should equal(Some("/root/index"))
     }
   }
 

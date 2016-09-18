@@ -1,8 +1,7 @@
 package model
 
-import skinny.orm._, feature._
+import skinny.orm._
 import scalikejdbc._
-import org.joda.time._
 
 case class Department(
   id: Long,
@@ -11,10 +10,9 @@ case class Department(
   employees: Seq[Employee] = Nil
 )
 
-object Department extends SkinnyCRUDMapper[Department] with OptimisticLockWithVersionFeature[Department] {
+object Department extends SkinnyCRUDMapper[Department] {
   override lazy val tableName = "department"
   override lazy val defaultAlias = createAlias("d")
-  override lazy val lockVersionFieldName = "version"
 
   lazy val employeesRef = hasMany[Employee](
     many = Employee -> Employee.defaultAlias,

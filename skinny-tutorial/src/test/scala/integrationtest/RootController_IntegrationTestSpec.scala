@@ -8,7 +8,7 @@ class RootController_IntegrationTestSpec extends SkinnyFlatSpec with SkinnyTestS
 
   it should "show top page" in {
     get("/") {
-      status should equal(200)
+      status should equal(302)
     }
   }
 

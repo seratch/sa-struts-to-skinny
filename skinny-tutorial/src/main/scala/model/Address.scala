@@ -1,8 +1,7 @@
 package model
 
-import skinny.orm._, feature._
+import skinny.orm._
 import scalikejdbc._
-import org.joda.time._
 
 case class Address(
   id: Long,
@@ -10,10 +9,9 @@ case class Address(
   version: Int
 )
 
-object Address extends SkinnyCRUDMapper[Address] with OptimisticLockWithVersionFeature[Address] {
+object Address extends SkinnyCRUDMapper[Address] {
   override lazy val tableName = "address"
   override lazy val defaultAlias = createAlias("a")
-  override lazy val lockVersionFieldName = "version"
 
   override def extract(rs: WrappedResultSet, rn: ResultName[Address]): Address = {
     autoConstruct(rs, rn)
