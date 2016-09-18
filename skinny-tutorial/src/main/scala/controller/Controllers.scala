@@ -19,6 +19,7 @@ object Controllers extends ServletApiImplicits {
     foreach.mount(ctx)
     nestedForeach.mount(ctx)
     select.mount(ctx)
+    textarea.mount(ctx)
     validator.mount(ctx)
     redirect.mount(ctx)
     ctx.mount(upload, "/sa-struts-tutorial/upload/*")
@@ -71,6 +72,10 @@ object Controllers extends ServletApiImplicits {
   object select extends _root_.controller.tutorial.SelectController with Routes {
     val indexUrl = get("/sa-struts-tutorial/select/?")(index).as('index)
     val submitUrl = post("/sa-struts-tutorial/select/?")(submit).as('submit)
+  }
+  object textarea extends _root_.controller.tutorial.TextareaController with Routes {
+    val indexUrl = get("/sa-struts-tutorial/textarea/?")(index).as('index)
+    val submitUrl = post("/sa-struts-tutorial/textarea/?")(submit).as('submit)
   }
   object validator extends _root_.controller.tutorial.ValidatorController with Routes {
     val indexUrl = get("/sa-struts-tutorial/validator/?")(index).as('index)

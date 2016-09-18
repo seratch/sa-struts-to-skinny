@@ -1,0 +1,11 @@
+<%@val s: skinny.Skinny %>
+
+<h1>Tutorial: Textarea</h1>
+
+<form method="post" action="${s.url(Controllers.textarea.submitUrl)}" class="form">
+<textarea name="textarea">${s.params.textarea}</textarea>
+${unescape(s.csrfHiddenInputTag)}
+<br />
+<pre>${s.params.textarea}</pre>
+<input type="submit" name="submit" value="サブミット"/>
+</form>
