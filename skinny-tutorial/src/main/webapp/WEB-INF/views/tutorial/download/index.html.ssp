@@ -1,0 +1,8 @@
+<%@val s: skinny.Skinny %>
+
+<h1>Tutorial: Download</h1>
+
+<form method="post" action="${s.url(Controllers.download.downloadUrl)}" class="form">
+${unescape(s.csrfHiddenInputTag)}
+<input type="submit" name="download" value="ダウンロード"/>
+</form>
