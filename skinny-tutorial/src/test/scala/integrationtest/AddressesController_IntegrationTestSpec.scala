@@ -12,6 +12,7 @@ class AddressesController_IntegrationTestSpec extends SkinnyFlatSpec with Skinny
 
   override def afterAll() {
     super.afterAll()
+    Employee.deleteAll()
     Address.deleteAll()
   }
 

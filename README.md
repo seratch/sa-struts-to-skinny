@@ -1,5 +1,7 @@
 ## Example app to show how to migrate SAStruts apps
 
+[![Build Status](https://travis-ci.org/seratch/sa-struts-to-skinny.svg?branch=master)](https://travis-ci.org/seratch/sa-struts-to-skinny)
+
 This is a working example for the following talk at the Seasar conference.
 
 ["SAStruts + S2JDBC から Skinny Framework への移行ガイド"](https://event.seasarfoundation.org/sc2016/speaker/kazuhiro-sera/)

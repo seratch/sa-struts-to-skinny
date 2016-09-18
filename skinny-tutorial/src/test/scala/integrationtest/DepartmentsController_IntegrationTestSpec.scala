@@ -12,6 +12,7 @@ class DepartmentsController_IntegrationTestSpec extends SkinnyFlatSpec with Skin
 
   override def afterAll() {
     super.afterAll()
+    Employee.deleteAll()
     Department.deleteAll()
   }
 
