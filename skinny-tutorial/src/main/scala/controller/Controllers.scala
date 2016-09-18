@@ -2,18 +2,23 @@ package controller
 
 import skinny._
 import skinny.controller.AssetsController
+import skinny.micro.context.RichServletContext
+import skinny.micro.implicits.ServletApiImplicits
 
-object Controllers {
+object Controllers extends ServletApiImplicits {
 
   def mount(ctx: ServletContext): Unit = {
-    add.mount(ctx)
-    ajax.mount(ctx)
-    checkbox.mount(ctx)
-    foreach.mount(ctx)
     employees.mount(ctx)
     departments.mount(ctx)
     addresses.mount(ctx)
     root.mount(ctx)
+
+    add.mount(ctx)
+    ajax.mount(ctx)
+    checkbox.mount(ctx)
+    foreach.mount(ctx)
+    ctx.mount(upload, "/sa-struts-tutorial/upload/*")
+
     AssetsController.mount(ctx)
   }
 
@@ -45,6 +50,11 @@ object Controllers {
   object foreach extends _root_.controller.tutorial.ForeachController with Routes {
     val indexUrl = get("/sa-struts-tutorial/foreach/?")(index).as('index)
     val resultUrl = get("/sa-struts-tutorial/foreach/result/:id")(result).as('submit)
+  }
+
+  object upload extends _root_.controller.tutorial.UploadController with Routes {
+    val indexUrl = get("/?")(index).as('index)
+    val uploadUrl = post("/?")(upload).as('upload)
   }
 
 }

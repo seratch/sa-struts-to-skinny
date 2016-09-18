@@ -1,0 +1,20 @@
+<%@val s: skinny.Skinny %>
+<%@val errorMessages: Seq[String] %>
+
+<h1>Tutorial: Upload</h1>
+
+#if (errorMessages.isEmpty == false)
+    <font color="red"><ul>
+        #for (error <- errorMessages)
+            <li class="control-label">${error}</li>
+        #end
+    </ul></font>
+#end
+
+<form method="post" action="${s.url(Controllers.upload.uploadUrl)}" enctype="multipart/form-data">
+<input type="file" name="formFile" /><br />
+<input type="file" name="formFiles[0]" /><br />
+<input type="file" name="formFiles[1]" /><br />
+${unescape(s.csrfHiddenInputTag)}
+<input type="submit" name="upload" value="アップロード"/>
+</form>
