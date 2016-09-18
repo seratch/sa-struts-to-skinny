@@ -30,6 +30,8 @@ Access http://localhost:8081/sa-struts-tutorial/ from your browser.
 #### Skinny
 
 ```
+cd skinny-tutorial
+./skinny db:migreate
 ./skinny run
 ```
 
@@ -37,6 +39,14 @@ Access http://localhost:8081/sa-struts-tutorial/ from your browser.
 - scaffolding from `sql/create.sql`: /addresses, /departments and /employees
 
 <img width="1184" alt="screen shot 2016-09-18 at 13 45 21" src="https://cloud.githubusercontent.com/assets/19658/18612945/2e243a6c-7da6-11e6-9297-184abcbfbe3d.png">
+
+Running tests is also easy to start.
+
+```
+cd skinny-tutorial
+./skinny db:migreate test
+./skinny test
+```
 
 ## License
 
