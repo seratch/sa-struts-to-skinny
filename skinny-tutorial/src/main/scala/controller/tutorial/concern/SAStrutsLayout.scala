@@ -1,4 +1,4 @@
-package controller.concern
+package controller.tutorial.concern
 
 import skinny.controller.feature.{ BeforeAfterActionFeature, ScalateTemplateEngineFeature }
 import skinny.micro.base.MainThreadLocalEverywhere
