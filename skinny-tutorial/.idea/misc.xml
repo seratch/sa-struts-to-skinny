@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleLocalSettings">
+    <option name="modificationStamps">
+      <map>
+        <entry key="$PROJECT_DIR$/../../../commons-entity-generator" value="2934061594000" />
+        <entry key="$PROJECT_DIR$/../../../commons-smartformat" value="2934420699000" />
+        <entry key="$PROJECT_DIR$/../../../commons-smartformat-preview-renderer" value="1459212983000" />
+        <entry key="$PROJECT_DIR$/../../../entity-generator" value="2916835357000" />
+        <entry key="$PROJECT_DIR$/../../kotliquery" value="1460208607000" />
+        <entry key="$PROJECT_DIR$/../../lombok-jpa-entity-generator" value="2916772007000" />
+        <entry key="$PROJECT_DIR$/../../../smartformat-java" value="2914003063000" />
+      </map>
+    </option>
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Bundled (Maven 3)" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" default="true" assert-keyword="true" jdk-15="true" />
+  <component name="SbtLocalSettings">
+    <option name="modificationStamps">
+      <map>
+        <entry key="$PROJECT_DIR$/../../AWScala" value="1457571830000" />
+        <entry key="$PROJECT_DIR$" value="1469402586000" />
+        <entry key="$PROJECT_DIR$/../../scalikejdbc" value="16000132529000" />
+        <entry key="$PROJECT_DIR$/../../skinny-micro" value="14578491966000" />
+        <entry key="$PROJECT_DIR$/../../slack-incoming-webhook" value="1465914368000" />
+        <entry key="$PROJECT_DIR$/../../../reactor-kinesis" value="1473143619000" />
+        <entry key="$PROJECT_DIR$/../../../smart-ad-premium-server" value="1456720146000" />
+        <entry key="$PROJECT_DIR$/../../../smartengine-analyzer" value="1464043697000" />
+        <entry key="$PROJECT_DIR$/../../../sn-database-admin" value="1468848628000" />
+        <entry key="$PROJECT_DIR$/../../../worklog" value="1454551393000" />
+        <entry key="$USER_HOME$/sm-techtalk/smartnews-main-admin_prepared" value="1448154810000" />
+        <entry key="$USER_HOME$/tmp/gitbucket" value="1454551393000" />
+        <entry key="$USER_HOME$/tmp/jetty-context" value="1472112747000" />
+        <entry key="$USER_HOME$/tmp/play/play-csrf-example" value="1464092565000" />
+        <entry key="$USER_HOME$/tmp/play23" value="1471854331000" />
+        <entry key="$USER_HOME$/tmp/redmine" value="1454551393000" />
+        <entry key="$USER_HOME$/tmp/smartnews-admin" value="1448154810000" />
+        <entry key="$USER_HOME$/tmp/todolist" value="1454551393000" />
+        <entry key="$USER_HOME$/work/hello-skinny" value="1454551393000" />
+      </map>
+    </option>
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
