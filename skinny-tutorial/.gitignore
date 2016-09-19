@@ -65,3 +65,6 @@ ivy2
 node_modules
 
 work/
+
+.ensime
+.ensime_cache/
