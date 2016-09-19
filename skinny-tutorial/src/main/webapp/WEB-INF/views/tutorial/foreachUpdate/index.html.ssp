@@ -1,0 +1,16 @@
+<%@val s: skinny.Skinny %>
+<%@val items: Seq[model.ForeachItem] %>
+<h1>Tutorial: Foreach Update</h1>
+
+<form method="post" action="${s.url(Controllers.foreachUpdate.submitUrl)}" class="form">
+<table border="1">
+#for ((m, idx) <- items.zipWithIndex)
+    <tr>
+    <td><input type="text" name="mapItems[${idx}].id" value="${m.id}"></td>
+    <td><input type="text" name="mapItems[${idx}].name" value="${m.name}"></td>
+    </tr>
+#end
+</table>
+<br/>
+<input type="submit" name="submit" value="サブミット"/>
+</form>

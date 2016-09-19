@@ -19,6 +19,7 @@ object Controllers extends ServletApiImplicits {
     condition.mount(ctx)
     download.mount(ctx)
     foreach.mount(ctx)
+    foreachUpdate.mount(ctx)
     nestedForeach.mount(ctx)
     select.mount(ctx)
     multiselect.mount(ctx)
@@ -72,6 +73,10 @@ object Controllers extends ServletApiImplicits {
     val indexButtonUrl = get("/sa-struts-tutorial/foreachButton/?")(indexButton).as('indexButton)
     val resultUrl = get("/sa-struts-tutorial/foreach/result/:id")(result).as('result)
     val resultPostUrl = post("/sa-struts-tutorial/foreachButton/?")(result).as('resultPost)
+  }
+  object foreachUpdate extends _root_.controller.tutorial.ForeachUpdateController with Routes {
+    val indexUrl = get("/sa-struts-tutorial/foreachUpdate/?")(index).as('index)
+    val submitUrl = post("/sa-struts-tutorial/foreachUpdate/?")(submit).as('submit)
   }
   object nestedForeach extends _root_.controller.tutorial.NestedForeachController with Routes {
     val indexUrl = get("/sa-struts-tutorial/nestedForeach/?")(index).as('index)
