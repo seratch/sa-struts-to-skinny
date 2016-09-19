@@ -27,6 +27,7 @@ object Controllers extends ServletApiImplicits {
     multibox.mount(ctx)
     multiselect.mount(ctx)
     textarea.mount(ctx)
+    tiles.mount(ctx)
     token.mount(ctx)
     validator.mount(ctx)
     redirect.mount(ctx)
@@ -112,6 +113,9 @@ object Controllers extends ServletApiImplicits {
   object textarea extends _root_.controller.tutorial.TextareaController with Routes {
     val indexUrl = get("/sa-struts-tutorial/textarea/?")(index).as('index)
     val submitUrl = post("/sa-struts-tutorial/textarea/?")(submit).as('submit)
+  }
+  object tiles extends _root_.controller.tutorial.TilesController with Routes {
+    val indexUrl = get("/sa-struts-tutorial/tiles/?")(index).as('index)
   }
   object token extends _root_.controller.tutorial.TokenController with Routes {
     val indexUrl = get("/sa-struts-tutorial/token/?")(index).as('index)

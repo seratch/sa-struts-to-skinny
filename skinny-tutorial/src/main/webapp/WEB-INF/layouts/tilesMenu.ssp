@@ -1,0 +1,5 @@
+<%@val s: skinny.Skinny %>
+<ul>
+<li><a href="${s.url(Controllers.add.indexUrl)}">足し算</a></li>
+<li><a href="${s.url(Controllers.foreach.indexUrl)}">繰り返し</a></li>
+</ul>

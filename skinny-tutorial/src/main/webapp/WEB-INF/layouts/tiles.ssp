@@ -1,0 +1,40 @@
+<%@val title: String = "default title" %>
+<%@val body: String %>
+<%@val s: skinny.Skinny %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+${unescape(s.csrfMetaTags)}
+<title>${title}</title>
+<script type="text/javascript" src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+<link rel="stylesheet" href="${uri("/assets/css/sa.css")}"/>
+</head>
+<body>
+
+<table class="layout" width="100%">
+<tr>
+<td class="header" colspan="2">
+${include("/layouts/tilesHeader.ssp")}
+</td>
+</tr>
+
+<tr>
+<td class="menu" width="20%">
+${include("/layouts/tilesMenu.ssp")}
+</td>
+<td class="content" >
+${unescape(body)}
+</td>
+</tr>
+
+<tr>
+<td class="footer" colspan="2">
+${include("/layouts/tilesFooter.ssp")}
+</td>
+</tr>
+
+</table>
+</body>
+</html>
