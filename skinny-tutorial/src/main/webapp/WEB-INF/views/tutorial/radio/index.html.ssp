@@ -1,0 +1,13 @@
+<%@val s: skinny.Skinny %>
+<%@val radio: Option[String] = None %>
+<h1>Tutorial: Radio</h1>
+
+<form method="post" action="${s.url(Controllers.radio.submitUrl)}" class="form">
+<input type="radio" name="radio" value="1" #if (s.params.radio.exists(_=="1") || s.params.radio.isEmpty) checked="checked" #end > One
+<input type="radio" name="radio" value="2" #if (s.params.radio.exists(_=="2")) checked="checked" #end > Two
+<input type="radio" name="radio" value="3" #if (s.params.radio.exists(_=="3")) checked="checked" #end > Three
+${unescape(s.csrfHiddenInputTag)}
+<br />
+${radio}<br />
+<input type="submit" name="submit" value="サブミット"/>
+</form>

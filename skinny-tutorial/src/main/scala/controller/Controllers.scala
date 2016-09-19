@@ -22,6 +22,7 @@ object Controllers extends ServletApiImplicits {
     foreachUpdate.mount(ctx)
     nestedForeach.mount(ctx)
     nestedForeachUpdate.mount(ctx)
+    radio.mount(ctx)
     select.mount(ctx)
     multibox.mount(ctx)
     multiselect.mount(ctx)
@@ -102,6 +103,10 @@ object Controllers extends ServletApiImplicits {
   object multiselect extends _root_.controller.tutorial.MultiselectController with Routes {
     val indexUrl = get("/sa-struts-tutorial/multiselect/?")(index).as('index)
     val submitUrl = post("/sa-struts-tutorial/multiselect/?")(submit).as('submit)
+  }
+  object radio extends _root_.controller.tutorial.RadioController with Routes {
+    val indexUrl = get("/sa-struts-tutorial/radio/?")(index).as('index)
+    val submitUrl = post("/sa-struts-tutorial/radio/?")(submit).as('submit)
   }
   object textarea extends _root_.controller.tutorial.TextareaController with Routes {
     val indexUrl = get("/sa-struts-tutorial/textarea/?")(index).as('index)
