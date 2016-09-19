@@ -1,0 +1,38 @@
+<%@val s: skinny.Skinny %>
+<%@val defaultCheck1: Option[Seq[String]] = None %>
+<%@val submit1: Option[String] = None %>
+<%@val submit2: Option[String] = None %>
+<%@val check1: Option[Seq[String]] %>
+<%@val mergedCheck1: Option[Seq[String]] = check1.orElse(defaultCheck1) %>
+<%@val check2: Option[Seq[String]] %>
+
+<h1>Tutorial: Multibox submit</h1>
+
+check1:${check1.map(_.mkString("[", ",", "]"))}<br />
+#if (submit2.isDefined)
+    check2:${check2.map(_.mkString("[", ",", "]"))}<br />
+#end
+
+#if (submit2.isDefined)
+
+#elseif (submit1.isDefined)
+    <form method="post" action="${s.url(Controllers.multibox.submitUrl)}" class="form">
+    <input type="checkbox" name="check2" value="1" #if (check2.exists(_.contains("1"))) checked="checked" #end> label1
+    <input type="checkbox" name="check2" value="2" #if (check2.exists(_.contains("2"))) checked="checked" #end> label2
+    <input type="checkbox" name="check2" value="3" #if (check2.exists(_.contains("3"))) checked="checked" #end> label3
+    ${unescape(s.csrfHiddenInputTag)}
+    #for (c1 <- check1.getOrElse(Seq.empty))
+        <input type="hidden" name="check1" value="${c1}">
+    #end
+    <br/>
+    <input type="submit" name="submit2" value="サブミット2"/>
+    </form>
+#else
+    <form method="post" action="${s.url(Controllers.multibox.submitUrl)}" class="form">
+    <input type="checkbox" name="check1" value="1" #if (mergedCheck1.exists(_.contains("1"))) checked="checked" #end> One
+    <input type="checkbox" name="check1" value="2" #if (mergedCheck1.exists(_.contains("2"))) checked="checked" #end> Two
+    <br/>
+    ${unescape(s.csrfHiddenInputTag)}
+    <input type="submit" name="submit1" value="サブミット"/>
+    </form>
+#end
