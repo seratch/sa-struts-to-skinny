@@ -1,0 +1,24 @@
+<%@val s: skinny.Skinny %>
+<%@val errorMessages: Seq[String] %>
+<%@val sessionScopeForm: Option[model.SessionScopeForm] %>
+
+<h1>Tutorial: Session second</h1>
+
+#if (errorMessages.isEmpty == false)
+<font color="red"><ul>
+    #for (error <- errorMessages)
+        <li class="control-label">${error}</li>
+    #end
+</ul></font>
+#end
+
+<form method="post" action="${s.url(Controllers.session.submitUrl)}" class="form">
+<table>
+<tr><td>First</td><td>${sessionScopeForm.map(_.first)}</td></tr>
+<tr><td>Second</td><td><input type="text" name="second" value="${sessionScopeForm.flatMap(_.second)}" /></td></tr>
+</table>
+${unescape(s.csrfHiddenInputTag)}
+<input type="hidden" name="first" value="${sessionScopeForm.map(_.first)}" />
+<input type="submit" name="goThird" value="Thirdへ"/>
+<input type="submit" name="index" value="戻る"/>
+</form>

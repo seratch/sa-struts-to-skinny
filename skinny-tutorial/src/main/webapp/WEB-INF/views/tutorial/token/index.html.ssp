@@ -6,7 +6,9 @@
 <h1>Tutorial: Token Input</h1>
 
 #if (submitted && error.isDefined)
-  ${error}
+<font color="red"><ul>
+  <li class="control-label">${error}</li>
+</ul></font>
 #elseif (submitted)
   ブラウザで前の画面に戻って、もう一度サブミットしてください。
 #else

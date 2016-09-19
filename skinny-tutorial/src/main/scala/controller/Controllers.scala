@@ -20,6 +20,7 @@ object Controllers extends ServletApiImplicits {
     download.mount(ctx)
     foreach.mount(ctx)
     foreachUpdate.mount(ctx)
+    logout.mount(ctx)
     nestedForeach.mount(ctx)
     nestedForeachUpdate.mount(ctx)
     radio.mount(ctx)
@@ -28,6 +29,7 @@ object Controllers extends ServletApiImplicits {
     multiselect.mount(ctx)
     textarea.mount(ctx)
     tiles.mount(ctx)
+    session.mount(ctx)
     token.mount(ctx)
     validator.mount(ctx)
     redirect.mount(ctx)
@@ -83,6 +85,9 @@ object Controllers extends ServletApiImplicits {
     val indexUrl = get("/sa-struts-tutorial/foreachUpdate/?")(index).as('index)
     val submitUrl = post("/sa-struts-tutorial/foreachUpdate/?")(submit).as('submit)
   }
+  object logout extends _root_.controller.tutorial.LogoutController with Routes {
+    val indexUrl = get("/sa-struts-tutorial/logout/?")(index).as('index)
+  }
   object nestedForeach extends _root_.controller.tutorial.NestedForeachController with Routes {
     val indexUrl = get("/sa-struts-tutorial/nestedForeach/?")(index).as('index)
   }
@@ -116,6 +121,10 @@ object Controllers extends ServletApiImplicits {
   }
   object tiles extends _root_.controller.tutorial.TilesController with Routes {
     val indexUrl = get("/sa-struts-tutorial/tiles/?")(index).as('index)
+  }
+  object session extends _root_.controller.tutorial.SessionController with Routes {
+    val indexUrl = get("/sa-struts-tutorial/session/?")(index).as('index)
+    val submitUrl = post("/sa-struts-tutorial/session/?")(submit).as('submit)
   }
   object token extends _root_.controller.tutorial.TokenController with Routes {
     val indexUrl = get("/sa-struts-tutorial/token/?")(index).as('index)
