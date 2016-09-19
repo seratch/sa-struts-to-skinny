@@ -1,0 +1,19 @@
+<%@val s: skinny.Skinny %>
+<%@val itemsSeq: Seq[Seq[model.ForeachItem]] %>
+
+<h1>Tutorial: Nested Foreach Update</h1>
+
+<form method="post" action="${s.url(Controllers.nestedForeachUpdate.submitUrl)}" class="form">
+<table border="1">
+#for ((items, i) <- itemsSeq.zipWithIndex)
+    <tr>
+    #for ((m, j) <- items.zipWithIndex)
+        <td><input type="text" name="mapItemsItems[${i}][${j}].id" value="${m.id}"></td>
+        <td><input type="text" name="mapItemsItems[${i}][${j}].name" value="${m.name}"></td>
+    #end
+    </tr>
+#end
+</table>
+<br/>
+<input type="submit" name="submit" value="サブミット"/>
+</form>

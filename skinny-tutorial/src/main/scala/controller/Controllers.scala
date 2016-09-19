@@ -21,6 +21,7 @@ object Controllers extends ServletApiImplicits {
     foreach.mount(ctx)
     foreachUpdate.mount(ctx)
     nestedForeach.mount(ctx)
+    nestedForeachUpdate.mount(ctx)
     select.mount(ctx)
     multiselect.mount(ctx)
     textarea.mount(ctx)
@@ -80,6 +81,10 @@ object Controllers extends ServletApiImplicits {
   }
   object nestedForeach extends _root_.controller.tutorial.NestedForeachController with Routes {
     val indexUrl = get("/sa-struts-tutorial/nestedForeach/?")(index).as('index)
+  }
+  object nestedForeachUpdate extends _root_.controller.tutorial.NestedForeachUpdateController with Routes {
+    val indexUrl = get("/sa-struts-tutorial/nestedForeachUpdate/?")(index).as('index)
+    val submitUrl = post("/sa-struts-tutorial/nestedForeachUpdate/?")(submit).as('submit)
   }
   object redirect extends _root_.controller.tutorial.RedirectController with Routes {
     val indexUrl = get("/sa-struts-tutorial/redirect/?")(index).as('index)
