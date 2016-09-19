@@ -27,6 +27,7 @@ object Controllers extends ServletApiImplicits {
     multibox.mount(ctx)
     multiselect.mount(ctx)
     textarea.mount(ctx)
+    token.mount(ctx)
     validator.mount(ctx)
     redirect.mount(ctx)
     ctx.mount(upload, "/sa-struts-tutorial/upload/*")
@@ -111,6 +112,10 @@ object Controllers extends ServletApiImplicits {
   object textarea extends _root_.controller.tutorial.TextareaController with Routes {
     val indexUrl = get("/sa-struts-tutorial/textarea/?")(index).as('index)
     val submitUrl = post("/sa-struts-tutorial/textarea/?")(submit).as('submit)
+  }
+  object token extends _root_.controller.tutorial.TokenController with Routes {
+    val indexUrl = get("/sa-struts-tutorial/token/?")(index).as('index)
+    val submitUrl = post("/sa-struts-tutorial/token/?")(submit).as('submit)
   }
   object validator extends _root_.controller.tutorial.ValidatorController with Routes {
     val indexUrl = get("/sa-struts-tutorial/validator/?")(index).as('index)

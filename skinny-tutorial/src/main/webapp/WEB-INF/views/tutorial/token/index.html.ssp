@@ -1,0 +1,18 @@
+<%@val s: skinny.Skinny %>
+<%@val token: String = "" %>
+<%@val submitted: Boolean = false %>
+<%@val error: Option[String] = None %>
+
+<h1>Tutorial: Token Input</h1>
+
+#if (submitted && error.isDefined)
+  ${error}
+#elseif (submitted)
+  ブラウザで前の画面に戻って、もう一度サブミットしてください。
+#else
+  <form method="post" action="${s.url(Controllers.token.submitUrl)}" class="form">
+  ${unescape(s.csrfHiddenInputTag)}
+  <input type="hidden" name="token" value="${token}" />
+  <input type="submit" name="result" value="サブミット"/>
+  </form>
+#end
