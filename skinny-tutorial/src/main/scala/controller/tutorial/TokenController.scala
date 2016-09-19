@@ -2,7 +2,7 @@ package controller.tutorial
 
 class TokenController extends SAStrutsTutorialController {
 
-  private[this] val TOKEN_SESSION_ATTRIBUTE_NAME = s"token-for-${classOf[TokenController]}"
+  private[this] val TOKEN_SESSION_ATTRIBUTE_NAME = s"token-for-${classOf[TokenController].getCanonicalName()}"
 
   def index = {
     saveToken()
@@ -12,8 +12,7 @@ class TokenController extends SAStrutsTutorialController {
   def submit = try {
     set("submitted" -> true)
     (sentToken(), expectedToken()) match {
-      case (Some(sent), Some(expected)) if sent == expected =>
-      // valid
+      case (Some(sent), Some(expected)) if sent == expected => // valid
       case (sent, expected) =>
         logger.warn(s"sent: ${sent}, expected: ${expected}")
         set("error" -> Some("Tokenが不正です。"))
