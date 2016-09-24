@@ -16,15 +16,8 @@ class AddController extends SAStrutsTutorialController {
 
   def submit = {
     if (addForm.validate()) {
-      val result: Option[Int] = {
-        for {
-          arg1 <- params.getAs[Int]("arg1")
-          arg2 <- params.getAs[Int]("arg2")
-        } yield arg1 + arg2
-      }
-      set("result" -> result)
-    } else {
-      status = 400
+      val result = params("arg1").toInt + params("arg2").toInt
+      set("result" -> Some(result))
     }
     render("/tutorial/add/index")
   }
